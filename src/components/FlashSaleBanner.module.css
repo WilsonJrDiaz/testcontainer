@@ -1,0 +1,181 @@
+.banner {
+  background: var(--black);
+  margin: 0 clamp(1rem, 4vw, 3rem);
+  border-radius: 4px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 320px;
+  position: relative;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 70%, rgba(201, 168, 76, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.left {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.title em { color: var(--gold); font-style: italic; }
+
+.sub {
+  color: rgba(250, 250, 248, 0.5);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.countdown {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.cdBox {
+  text-align: center;
+  background: rgba(250, 250, 248, 0.05);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 4px;
+  padding: 0.65rem 0.85rem;
+  min-width: 60px;
+}
+
+.cdNum {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+
+.cdLabel {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250, 250, 248, 0.4);
+  font-weight: 600;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.btn {
+  padding: 0.9rem 2rem;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: fit-content;
+  transition: background 0.2s;
+}
+
+.btn:hover { background: var(--gold-light); }
+
+/* Right panel */
+.right {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(250, 250, 248, 0.07);
+  position: relative;
+}
+
+.deal {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(250, 250, 248, 0.07);
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  text-align: left;
+  transition: background 0.2s;
+  color: var(--white);
+}
+
+.deal:last-child { border-bottom: none; }
+.deal:hover { background: rgba(201, 168, 76, 0.05); }
+
+.dealEmoji { font-size: 2.5rem; flex-shrink: 0; }
+
+.dealBrand {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.dealName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0.15rem 0;
+}
+
+.dealPrices {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.dealNow { font-size: 1rem; font-weight: 700; color: var(--white); }
+.dealWas { font-size: 0.75rem; color: rgba(250, 250, 248, 0.35); text-decoration: line-through; }
+.dealPct {
+  font-size: 0.65rem;
+  background: var(--red);
+  color: white;
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  font-weight: 700;
+}
+.dealShip { font-size: 0.65rem; color: var(--green); font-weight: 600; margin-top: 0.2rem; }
+
+@media (max-width: 700px) {
+  .banner { grid-template-columns: 1fr; }
+  .right { border-left: none; border-top: 1px solid rgba(250, 250, 248, 0.07); }
+}

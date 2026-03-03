@@ -1,0 +1,36 @@
+.wrap {
+  background: var(--gold);
+  overflow: hidden;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  display: flex;
+  animation: tick 35s linear infinite;
+  white-space: nowrap;
+}
+
+.item {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding: 0 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item:not(:last-child)::after {
+  content: '·';
+  margin-left: 2.5rem;
+  opacity: 0.35;
+}
+
+@keyframes tick {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

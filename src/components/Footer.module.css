@@ -1,0 +1,115 @@
+.footer {
+  background: var(--black);
+  color: var(--white);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem) 2rem;
+  margin-top: clamp(3rem, 5vw, 5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.joy { color: var(--white); }
+.lot { color: var(--gold); }
+
+.about {
+  font-size: 0.82rem;
+  color: rgba(250, 250, 248, 0.4);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+.cert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250, 250, 248, 0.35);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.links a {
+  font-size: 0.82rem;
+  color: rgba(250, 250, 248, 0.6);
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.links a:hover { color: var(--gold); }
+
+.bottom {
+  border-top: 1px solid rgba(250, 250, 248, 0.06);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copy {
+  font-size: 0.72rem;
+  color: rgba(250, 250, 248, 0.25);
+}
+
+.socials { display: flex; gap: 0.4rem; }
+
+.social {
+  width: 34px;
+  height: 34px;
+  border-radius: 2px;
+  border: 1px solid rgba(250, 250, 248, 0.1);
+  background: transparent;
+  color: rgba(250, 250, 248, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.social:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
