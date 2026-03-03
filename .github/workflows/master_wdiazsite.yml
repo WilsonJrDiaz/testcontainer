@@ -45,7 +45,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'wdiazsite'
+        app-name: 'testcontainer'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ad307ebdf70447a19774315918a9c69d }}
         images: 'wdiazcontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4b6e80aa694f4549a10c376df5a0246a }}/wilbot-nodejs:${{ github.sha }}'
