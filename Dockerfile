@@ -1,20 +1,21 @@
-# Usar imagen oficial de Node.js
-FROM node:18-alpine
-
-# Directorio de trabajo en el contenedor
+# ---- Build stage ----
+FROM node:20-alpine AS build
 WORKDIR /app
 
-# Copiar package.json y package-lock.json para instalar dependencias primero (mejor cache)
 COPY package*.json ./
+RUN npm ci
 
-# Instalar dependencias
-RUN npm install
-
-# Copiar el resto del código
 COPY . .
+RUN npm run build
 
-# Puerto en el que tu bot escucha (ajusta si es diferente)
-EXPOSE 3000
+# ---- Runtime stage (nginx) ----
+FROM nginx:alpine
 
-# Comando para iniciar tu bot
-CMD ["npm", "run", "dev"]
+# SPA fallback config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy built assets
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
