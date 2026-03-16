@@ -6,7 +6,7 @@ name: Build and deploy container app to Azure Web App - wdiazsite
 on:
   push:
     branches:
-      - master
+      - new-site-withIA
   workflow_dispatch:
 
 jobs:
