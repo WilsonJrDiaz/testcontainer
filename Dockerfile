@@ -6,7 +6,7 @@ COPY package.json ./
 RUN npm install --omit=dev --no-audit --no-fund
 
 COPY . .
-
+ 
 # Azure App Service inyecta PORT automáticamente
 ENV PORT=8080
 EXPOSE 8080
