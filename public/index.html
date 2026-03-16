@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>JoyLot — Designer Brands 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & TOKENS ─── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --white:#ffffff;
+  --bg:#f7f5f2;
+  --bg2:#eeecea;
+  --ink:#111111;
+  --ink2:#333333;
+  --muted:#888888;
+  --border:rgba(0,0,0,.09);
+  --gold:#c9a040;
+  --gold-lt:#dbb96a;
+  --gold-dim:rgba(201,160,64,.13);
+  --gold-bdr:rgba(201,160,64,.38);
+  --red:#c0392b;
+  --shadow:0 2px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.14);
+  --radius:6px;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Manrope',sans-serif;font-weight:400;overflow-x:hidden;line-height:1.5;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Manrope',sans-serif;cursor:pointer;}
+input,textarea{font-family:'Manrope',sans-serif;}
+img{display:block;max-width:100%;}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--gold-bdr);border-radius:2px;}
+
+/* ═══════════════════════════════════
+   TOP ANNOUNCEMENT BAR
+═══════════════════════════════════ */
+.top-bar{
+  background:#111;color:#ccc;
+  font-size:.72rem;letter-spacing:.06em;
+  padding:.42rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.top-bar .hl{color:var(--gold);}
+
+/* ─── PROMO TICKER ─── */
+.promo-bar{
+  background:#1a1200;
+  border-bottom:1px solid rgba(201,160,64,.2);
+  padding:.5rem 0;overflow:hidden;
+}
+.promo-track{
+  display:flex;gap:4rem;
+  animation:marquee 32s linear infinite;
+  white-space:nowrap;padding:0 2rem;
+}
+.promo-item{font-size:.7rem;letter-spacing:.1em;color:var(--gold);}
+.promo-item b{color:rgba(255,255,255,.6);font-weight:500;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+nav{
+  position:sticky;top:0;z-index:500;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 12px rgba(0,0,0,.06);
+  padding:0 2rem;
+  display:flex;align-items:center;height:66px;gap:1.25rem;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:700;
+  color:var(--ink);flex-shrink:0;
+  margin-right:.25rem;
+}
+.nav-logo span{color:var(--gold);}
+
+/* search */
+.nav-search{flex:1;max-width:380px;position:relative;margin-right:auto;}
+.nav-search input{
+  width:100%;padding:.52rem 1rem .52rem 2.5rem;
+  background:#f5f3f0;border:1px solid var(--border);
+  color:var(--ink);font-size:.82rem;border-radius:var(--radius);
+  outline:none;transition:all .2s;
+}
+.nav-search input::placeholder{color:var(--muted);}
+.nav-search input:focus{border-color:var(--gold-bdr);background:#fffdf6;box-shadow:0 0 0 3px var(--gold-dim);}
+.ns-ico{position:absolute;left:.78rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none;}
+.ns-drop{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius);z-index:600;display:none;
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.ns-drop.open{display:block;}
+.ns-item{
+  padding:.8rem 1rem;cursor:pointer;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.8rem;
+  transition:background .15s;
+}
+.ns-item:last-child{border:none;}
+.ns-item:hover{background:var(--bg);}
+.ns-em{font-size:1.3rem;flex-shrink:0;}
+.ns-name{font-size:.82rem;color:var(--ink);font-weight:500;margin-bottom:.1rem;}
+.ns-meta{font-size:.7rem;color:var(--muted);display:flex;gap:.5rem;align-items:center;}
+.ns-tag{font-size:.6rem;background:var(--gold-dim);color:var(--gold);padding:.1rem .45rem;border-radius:3px;letter-spacing:.05em;font-weight:600;}
+.ns-price{color:var(--gold);font-weight:600;}
+
+/* nav links */
+.nav-links{display:flex;list-style:none;gap:0;margin:0 .25rem;}
+.nav-links a{
+  display:block;padding:0 .85rem;color:var(--muted);
+  font-size:.78rem;font-weight:500;letter-spacing:.03em;
+  line-height:66px;transition:color .2s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a.hot{color:var(--red);font-weight:600;}
+
+/* nav actions */
+.nav-actions{display:flex;align-items:center;gap:.35rem;}
+.ai-pill{
+  display:flex;align-items:center;gap:.38rem;
+  background:var(--gold-dim);border:1px solid var(--gold-bdr);
+  color:var(--gold);padding:.34rem .9rem;border-radius:20px;
+  font-size:.69rem;font-weight:600;letter-spacing:.07em;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.ai-pill:hover{background:rgba(201,160,64,.24);}
+.ai-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.nav-ibtn{
+  position:relative;background:none;border:none;
+  color:var(--muted);padding:.45rem .65rem;border-radius:var(--radius);
+  transition:color .2s,background .2s;
+  display:flex;align-items:center;gap:.3rem;
+  font-size:.74rem;font-weight:500;
+}
+.nav-ibtn:hover{color:var(--ink);background:var(--bg);}
+.nav-ibtn .ico{font-size:1.1rem;}
+.cart-badge{
+  position:absolute;top:2px;right:2px;
+  min-width:16px;height:16px;border-radius:8px;
+  background:var(--gold);color:#000;
+  font-size:.58rem;font-weight:700;line-height:16px;
+  text-align:center;padding:0 3px;display:none;
+}
+.cart-badge.on{display:block;}
+
+/* ─── CATEGORY NAV ─── */
+.cat-nav{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;display:flex;gap:0;
+  overflow-x:auto;scrollbar-width:none;
+}
+.cat-nav::-webkit-scrollbar{display:none;}
+.cat-nav a{
+  display:block;padding:.6rem 1.05rem;
+  color:var(--muted);font-size:.74rem;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  white-space:nowrap;border-bottom:2px solid transparent;
+  transition:all .2s;
+}
+.cat-nav a:hover{color:var(--ink);}
+.cat-nav a.active{color:var(--ink);border-bottom-color:var(--gold);}
+.cat-nav a.hl{color:var(--gold);}
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+.hero{
+  display:grid;grid-template-columns:1fr 360px;
+  min-height:calc(100vh - 130px);overflow:hidden;
+}
+.hero-left{
+  position:relative;
+  background:linear-gradient(145deg,#181818 0%,#0e0e0e 55%,#140d00 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:5rem 4rem;overflow:hidden;
+}
+.hero-left::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 70%,rgba(201,160,64,.09),transparent 55%);
+}
+.hero-eyebrow{
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.75rem;position:relative;
+}
+.hero-eyebrow::before{content:'';display:block;width:36px;height:1px;background:var(--gold);}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.5rem,6.5vw,6rem);font-weight:900;
+  line-height:.95;color:#fff;
+  margin-bottom:1.75rem;position:relative;
+}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{
+  color:#777;font-size:.9rem;line-height:1.75;
+  max-width:400px;margin-bottom:2.75rem;position:relative;
+  font-weight:400;
+}
+.hero-btns{display:flex;gap:.85rem;position:relative;flex-wrap:wrap;}
+.btn-gold{
+  padding:.9rem 2.1rem;background:var(--gold);color:#000;
+  border:none;font-size:.77rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;
+  border-radius:3px;
+}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);}
+.btn-outline-w{
+  padding:.9rem 1.8rem;background:transparent;color:#fff;
+  border:1px solid rgba(255,255,255,.22);
+  font-size:.77rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  transition:all .2s;border-radius:3px;
+}
+.btn-outline-w:hover{border-color:var(--gold-bdr);color:var(--gold);}
+
+/* hero right — featured products */
+.hero-right{
+  background:#f0ede8;
+  border-left:1px solid rgba(0,0,0,.07);
+  display:flex;flex-direction:column;
+}
+.hfc{
+  flex:1;padding:1.6rem 1.5rem;
+  border-bottom:1px solid rgba(0,0,0,.07);
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.hfc:last-child{border:none;}
+.hfc:hover{background:#e5e2dc;}
+.hfc-badge{
+  display:inline-block;font-size:.57rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;
+  padding:.22rem .55rem;margin-bottom:.45rem;border-radius:3px;
+}
+.b-new{background:var(--gold);color:#000;}
+.b-sale{background:var(--red);color:#fff;}
+.b-hot{background:#111;color:#fff;}
+.b-auth{background:var(--gold);color:#000;}
+.b-pct{background:var(--red);color:#fff;}
+.hfc-brand{font-size:.63rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;}
+.hfc-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);line-height:1.2;}
+.hfc-price{font-size:.84rem;color:var(--muted);font-weight:500;}
+.hfc-price del{margin-left:.4rem;font-size:.78rem;}
+.hfc-em{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);font-size:2.6rem;opacity:.2;}
+
+/* ─── TICKER ─── */
+.ticker{
+  background:#100c00;
+  border-top:1px solid rgba(201,160,64,.15);
+  border-bottom:1px solid rgba(201,160,64,.15);
+  padding:.58rem 0;overflow:hidden;
+}
+.ticker-track{display:flex;gap:3rem;animation:marquee 30s linear infinite;white-space:nowrap;}
+.t-i{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+.t-i b{color:rgba(255,255,255,.5);font-weight:500;}
+
+/* ═══════════════════════════════════
+   BRANDS STRIP
+═══════════════════════════════════ */
+.brands-strip{
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:1.25rem 2rem;
+  display:flex;align-items:center;gap:.75rem;
+  overflow-x:auto;scrollbar-width:none;
+}
+.brands-strip::-webkit-scrollbar{display:none;}
+.brands-lbl{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);flex-shrink:0;margin-right:.5rem;}
+.brand-pill{
+  padding:.3rem .95rem;border:1px solid var(--border);
+  border-radius:20px;font-size:.72rem;font-weight:600;
+  color:var(--ink2);background:#fff;cursor:pointer;
+  transition:all .2s;white-space:nowrap;flex-shrink:0;
+}
+.brand-pill:hover,.brand-pill.active{border-color:var(--gold-bdr);color:var(--gold);background:var(--gold-dim);}
+
+/* ═══════════════════════════════════
+   SECTIONS
+═══════════════════════════════════ */
+.section{padding:4.5rem 2rem;}
+.sec-hd{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  padding-bottom:1.5rem;margin-bottom:2.75rem;
+}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;color:var(--ink);}
+.sec-title em{font-style:italic;color:var(--gold);}
+.sec-meta{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* filters */
+.fbar{display:flex;gap:.5rem;margin-bottom:2.25rem;flex-wrap:wrap;align-items:center;}
+.flbl{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:.15rem;}
+.fbtn{
+  padding:.34rem 1rem;border:1px solid var(--border);
+  background:#fff;color:var(--muted);
+  font-size:.71rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  border-radius:20px;transition:all .2s;
+}
+.fbtn:hover,.fbtn.active{border-color:var(--gold-bdr);color:var(--gold);background:var(--gold-dim);}
+
+/* ═══════════════════════════════════
+   PRODUCT GRID
+═══════════════════════════════════ */
+.pgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:1rem;
+}
+.pc{
+  background:#fff;border:1px solid #e8e8e8;
+  border-radius:8px;overflow:hidden;
+  cursor:pointer;transition:all .25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.05);
+}
+.pc:hover{border-color:#ccc;box-shadow:0 6px 24px rgba(0,0,0,.12);transform:translateY(-4px);}
+.pc:hover .pc-acts{opacity:1;transform:translateY(0);}
+.pc-img{
+  aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;position:relative;overflow:hidden;
+}
+.pc-bg-0{background:#dde8f5;}
+.pc-bg-1{background:#e8dff5;}
+.pc-bg-2{background:#f5f0e0;}
+.pc-bg-3{background:#dff0ea;}
+.pc-bg-4{background:#f5e8e0;}
+.pc-bg-5{background:#e0eaf5;}
+.pc-bg-6{background:#f0f5e0;}
+.pc-bg-7{background:#f5e0ec;}
+.pc-badge{
+  position:absolute;top:.7rem;left:.7rem;
+  font-size:.57rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.22rem .6rem;border-radius:3px;z-index:1;
+}
+.pc-acts{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:.85rem;background:rgba(0,0,0,.7);
+  display:flex;gap:.55rem;
+  opacity:0;transform:translateY(8px);transition:all .25s;
+}
+.btn-atc{
+  flex:1;padding:.6rem;background:var(--gold);color:#000;
+  border:none;font-size:.67rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  border-radius:3px;transition:background .15s;
+}
+.btn-atc:hover{background:var(--gold-lt);}
+.btn-ai-sm{
+  padding:.6rem .85rem;
+  background:rgba(255,255,255,.15);color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  font-size:.67rem;font-weight:600;letter-spacing:.04em;
+  display:flex;align-items:center;gap:.3rem;
+  border-radius:3px;transition:all .2s;white-space:nowrap;
+}
+.btn-ai-sm:hover{background:var(--gold-dim);border-color:var(--gold-bdr);color:var(--gold);}
+.btn-wl{
+  padding:.6rem .75rem;background:rgba(255,255,255,.1);color:#fff;
+  border:1px solid rgba(255,255,255,.2);border-radius:3px;
+  font-size:.9rem;transition:all .2s;
+}
+.btn-wl:hover{background:rgba(201,64,64,.35);border-color:rgba(201,64,64,.5);}
+.pc-body{padding:.95rem .9rem 1.2rem;}
+.pc-brand{font-size:.63rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;}
+.pc-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;line-height:1.25;}
+.pc-prices{display:flex;align-items:baseline;gap:.6rem;}
+.pc-now{font-size:.92rem;font-weight:700;color:var(--ink);}
+.pc-was{font-size:.78rem;color:var(--muted);text-decoration:line-through;}
+.pc-stars{font-size:.7rem;color:var(--gold);margin-top:.3rem;}
+
+/* ═══════════════════════════════════
+   CART SIDEBAR
+═══════════════════════════════════ */
+.cart-bd{position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.45);display:none;backdrop-filter:blur(4px);}
+.cart-bd.on{display:block;animation:fi .25s;}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.cart-side{
+  position:fixed;top:0;right:-460px;bottom:0;width:440px;
+  z-index:701;background:#fff;
+  display:flex;flex-direction:column;
+  transition:right .35s cubic-bezier(.25,.46,.45,.94);
+  box-shadow:-4px 0 30px rgba(0,0,0,.15);
+}
+.cart-side.on{right:0;}
+.cart-hd{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.35rem 1.65rem;border-bottom:1px solid #eee;
+}
+.cart-hd-t{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--ink);}
+.cart-x{background:none;border:none;cursor:pointer;color:#aaa;font-size:1.4rem;line-height:1;padding:.2rem;transition:color .2s;}
+.cart-x:hover{color:var(--ink);}
+.cart-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem;scrollbar-width:thin;scrollbar-color:#ddd transparent;}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:.85rem;padding:2.5rem;}
+.cart-empty .eico{font-size:3.5rem;opacity:.55;}
+.cart-empty strong{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink);}
+.cart-empty p{font-size:.84rem;color:var(--muted);}
+.citem{display:grid;grid-template-columns:76px 1fr auto;gap:.9rem;padding:1.15rem 0;border-bottom:1px solid #eee;align-items:start;}
+.ci-img{width:76px;height:76px;background:var(--bg2);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;}
+.ci-brand{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.18rem;}
+.ci-name{font-size:.84rem;color:var(--ink);font-weight:500;margin-bottom:.3rem;line-height:1.3;}
+.ci-qty{display:inline-flex;align-items:center;border:1px solid #e0e0e0;border-radius:4px;overflow:hidden;}
+.ci-qty button{width:28px;height:27px;background:none;border:none;cursor:pointer;color:#888;font-size:.9rem;transition:background .15s;display:flex;align-items:center;justify-content:center;}
+.ci-qty button:hover{background:#f5f5f5;}
+.ci-qty span{width:28px;height:27px;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--ink);border-left:1px solid #e0e0e0;border-right:1px solid #e0e0e0;font-weight:600;}
+.ci-right{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;}
+.ci-price{font-size:.9rem;color:var(--ink);font-weight:700;}
+.ci-rm{background:none;border:none;cursor:pointer;color:#ccc;font-size:.72rem;padding:.1rem;transition:color .2s;letter-spacing:.03em;}
+.ci-rm:hover{color:var(--red);}
+.cart-ft{padding:1.15rem 1.5rem;border-top:1px solid #eee;}
+.cart-sub{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;}
+.cart-sub .lbl{font-size:.78rem;color:#888;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+.cart-sub .val{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--ink);}
+.btn-checkout{
+  width:100%;padding:1rem;background:#111;color:#fff;border:none;
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  transition:background .2s;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+}
+.btn-checkout:hover{background:#333;}
+.cart-note{text-align:center;margin-top:.75rem;font-size:.68rem;color:#aaa;display:flex;align-items:center;justify-content:center;gap:.35rem;}
+
+/* ═══════════════════════════════════
+   BRANDS SECTION
+═══════════════════════════════════ */
+.brands-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;
+}
+.brand-card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.5rem 1rem;text-align:center;cursor:pointer;
+  transition:all .2s;
+}
+.brand-card:hover{border-color:var(--gold-bdr);box-shadow:var(--shadow);}
+.brand-card .bc-em{font-size:2rem;margin-bottom:.6rem;}
+.brand-card .bc-name{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);}
+.brand-card .bc-count{font-size:.66rem;color:var(--muted);margin-top:.2rem;}
+
+/* ═══════════════════════════════════
+   TRENDS
+═══════════════════════════════════ */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.tc{aspect-ratio:4/5;position:relative;overflow:hidden;background:#1a1a1a;cursor:pointer;}
+.tc:hover .tc-bg{transform:scale(1.08);}
+.tc-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:9rem;opacity:.1;color:#fff;transition:transform .55s cubic-bezier(.25,.46,.45,.94);font-family:'Playfair Display',serif;}
+.tc-info{position:absolute;bottom:0;left:0;right:0;padding:1.75rem 1.5rem;background:linear-gradient(to top,rgba(8,8,8,.95) 40%,transparent);}
+.tc-tag{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.42rem;}
+.tc-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.3rem;color:#fff;}
+.tc-desc{font-size:.77rem;color:#888;margin-bottom:.9rem;}
+.btn-tai{display:inline-flex;align-items:center;gap:.38rem;padding:.42rem .95rem;background:var(--gold-dim);border:1px solid var(--gold-bdr);color:var(--gold);font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;transition:all .2s;}
+.btn-tai:hover{background:rgba(201,160,64,.28);}
+
+/* ═══════════════════════════════════
+   SIZE / FIT ADVISOR
+═══════════════════════════════════ */
+.fit-section{margin:0 2rem 4.5rem;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:2.75rem;box-shadow:var(--shadow);}
+.fit-hd{display:flex;align-items:center;gap:.9rem;margin-bottom:2rem;}
+.fit-ico{width:48px;height:48px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold-bdr);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.fit-sub{font-size:.63rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:.18rem;}
+.fit-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--ink);}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.sinps{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:1.1rem;}
+.sg{display:flex;flex-direction:column;gap:.3rem;}
+.slbl{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.sinp{background:var(--bg);border:1px solid var(--border);color:var(--ink);padding:.6rem .85rem;font-size:.84rem;outline:none;transition:border-color .2s;border-radius:var(--radius);}
+.sinp:focus{border-color:var(--gold-bdr);box-shadow:0 0 0 3px var(--gold-dim);}
+.sres{background:var(--bg);border:1px solid var(--border);padding:1.4rem;min-height:155px;font-size:.84rem;line-height:1.75;color:var(--muted);border-radius:var(--radius);}
+.sres.loaded{color:var(--ink);}
+
+/* ═══════════════════════════════════
+   TRUST STRIP
+═══════════════════════════════════ */
+.trust-strip{
+  background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:1.75rem 2rem;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+}
+.trust-item{display:flex;align-items:center;gap:.85rem;}
+.trust-ico{font-size:1.6rem;flex-shrink:0;}
+.trust-label{font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:.15rem;}
+.trust-sub{font-size:.7rem;color:var(--muted);}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer{background:#111;color:#aaa;padding:4rem 2rem 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;margin-bottom:.75rem;color:#fff;}
+.ft-logo span{color:var(--gold);}
+.ft-tag{font-size:.8rem;line-height:1.7;max-width:270px;color:#666;}
+.ft-ct{font-size:.63rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.ft-ls{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.ft-ls a{font-size:.8rem;color:#666;transition:color .2s;}
+.ft-ls a:hover{color:#fff;}
+.ft-bot{background:#0a0a0a;border-top:1px solid rgba(255,255,255,.06);padding:1.15rem 2rem;display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:#555;}
+.ft-ai{display:flex;align-items:center;gap:.4rem;color:var(--gold);font-size:.66rem;font-weight:600;}
+
+/* ═══════════════════════════════════
+   AI PRODUCT MODAL
+═══════════════════════════════════ */
+.mdbg{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.mdbg.on{display:flex;animation:fi .25s;}
+.ai-modal{background:#fff;border:1px solid var(--border);max-width:900px;width:100%;max-height:92vh;overflow-y:auto;position:relative;border-radius:8px;box-shadow:var(--shadow-lg);animation:slideUp .3s cubic-bezier(.25,.46,.45,.94);}
+@keyframes slideUp{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+.md-x{position:absolute;top:.9rem;right:.9rem;z-index:5;background:rgba(0,0,0,.06);border:none;cursor:pointer;color:#888;font-size:1.1rem;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.md-x:hover{background:rgba(0,0,0,.12);color:var(--ink);}
+.md-top{display:grid;grid-template-columns:260px 1fr;}
+.md-img{background:linear-gradient(145deg,#f0ede8,#e8e4de);min-height:300px;display:flex;align-items:center;justify-content:center;font-size:7rem;border-right:1px solid var(--border);}
+.md-info{padding:2.1rem;}
+.md-brand{font-size:.66rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:.38rem;}
+.md-name{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;margin-bottom:.5rem;line-height:1.2;color:var(--ink);}
+.md-price-row{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.1rem;}
+.md-price{font-size:1.25rem;font-weight:700;color:var(--gold);}
+.md-was{font-size:.9rem;color:var(--muted);text-decoration:line-through;}
+.md-save{font-size:.75rem;font-weight:700;color:var(--red);background:rgba(192,57,43,.08);padding:.2rem .6rem;border-radius:3px;}
+.md-desc{color:var(--muted);font-size:.85rem;line-height:1.75;margin-bottom:1.3rem;}
+.md-acts{display:flex;gap:.7rem;flex-wrap:wrap;}
+.btn-add{padding:.8rem 1.8rem;background:var(--gold);color:#000;border:none;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;transition:all .2s;}
+.btn-add:hover{background:var(--gold-lt);}
+.btn-sec{padding:.8rem 1.15rem;background:transparent;color:var(--muted);border:1px solid var(--border);font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;transition:all .2s;}
+.btn-sec:hover{border-color:var(--gold-bdr);color:var(--gold);}
+/* ai tabs */
+.ai-tabs{border-top:1px solid var(--border);display:flex;background:var(--bg);}
+.atab{padding:.85rem 1.3rem;background:none;border:none;cursor:pointer;color:var(--muted);font-size:.69rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:.38rem;}
+.atab:hover{color:var(--ink);}
+.atab.active{color:var(--gold);border-bottom-color:var(--gold);background:#fff;}
+.apanel{padding:1.85rem;display:none;background:#fff;}
+.apanel.active{display:block;}
+/* loading dots */
+.ld{display:flex;align-items:center;gap:.7rem;color:var(--muted);font-size:.78rem;padding:.35rem 0;}
+.ld-d{display:flex;gap:.28rem;}
+.ld-d span{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:dp 1.2s infinite;}
+.ld-d span:nth-child(2){animation-delay:.2s;}
+.ld-d span:nth-child(3){animation-delay:.4s;}
+@keyframes dp{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+.atxt{color:var(--ink);font-size:.86rem;line-height:1.8;opacity:0;transition:opacity .4s;}
+.atxt.vis{opacity:1;}
+.outfit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.3rem;}
+.oc{background:var(--bg);border:1px solid var(--border);padding:.85rem;text-align:center;border-radius:var(--radius);}
+.oc-em{font-size:1.9rem;margin-bottom:.4rem;}
+.oc-lbl{font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:.22rem;}
+.oc-txt{font-size:.73rem;color:var(--muted);line-height:1.45;}
+.score-row{display:flex;align-items:center;gap:1rem;margin:.6rem 0;}
+.score-lbl{font-size:.72rem;color:var(--muted);font-weight:600;width:130px;flex-shrink:0;}
+.score-track{flex:1;height:3px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+.score-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-lt));border-radius:2px;transition:width 1s cubic-bezier(.25,.46,.45,.94);}
+.score-val{font-size:.72rem;color:var(--gold);font-weight:700;width:28px;text-align:right;}
+.ai-tags{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:.9rem;}
+.ai-tag{padding:.26rem .72rem;background:var(--gold-dim);border:1px solid var(--gold-bdr);color:var(--gold);font-size:.63rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;}
+
+/* ═══════════════════════════════════
+   TREND MODAL
+═══════════════════════════════════ */
+.trmbg{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.trmbg.on{display:flex;animation:fi .25s;}
+.trm{background:#fff;border:1px solid var(--border);max-width:600px;width:100%;max-height:88vh;overflow-y:auto;padding:2.5rem;border-radius:8px;position:relative;animation:slideUp .3s cubic-bezier(.25,.46,.45,.94);box-shadow:var(--shadow-lg);}
+.trm-tag{font-size:.63rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:.38rem;}
+.trm h3{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;margin-bottom:1.4rem;color:var(--ink);}
+.trm-body{color:var(--ink);font-size:.86rem;line-height:1.8;}
+
+/* ═══════════════════════════════════
+   AI CONCIERGE
+═══════════════════════════════════ */
+.cb{
+  position:fixed;bottom:2rem;right:2rem;z-index:550;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--gold);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+  box-shadow:0 4px 24px rgba(201,160,64,.5);
+  transition:all .3s;
+}
+.cb:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(201,160,64,.6);}
+.cb-n{
+  position:absolute;top:-3px;right:-3px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--red);color:#fff;
+  font-size:.58rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Manrope',sans-serif;border:2px solid var(--bg);
+}
+.cp{
+  position:fixed;bottom:5.75rem;right:2rem;z-index:550;
+  width:360px;max-height:580px;
+  background:#1a1a1a;border:1px solid rgba(255,255,255,.08);
+  display:none;flex-direction:column;
+  box-shadow:0 16px 48px rgba(0,0,0,.5);
+  border-radius:10px;overflow:hidden;
+  animation:slideUp .3s cubic-bezier(.25,.46,.45,.94);
+}
+.cp.on{display:flex;}
+.cp-hd{padding:1.05rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.65rem;}
+.cp-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8a5c1e);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.cp-name{font-size:.84rem;font-weight:600;color:#fff;}
+.cp-status{font-size:.61rem;color:var(--gold);display:flex;align-items:center;gap:.28rem;font-weight:500;}
+.cp-status::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:#4caf50;}
+.cp-msgs{flex:1;overflow-y:auto;padding:1.05rem;display:flex;flex-direction:column;gap:.8rem;min-height:260px;max-height:340px;scrollbar-width:thin;scrollbar-color:rgba(201,160,64,.2) transparent;}
+.cm{display:flex;gap:.55rem;align-items:flex-start;}
+.cm.u{flex-direction:row-reverse;}
+.cm-b{max-width:79%;padding:.65rem .88rem;font-size:.79rem;line-height:1.6;border-radius:8px;font-weight:400;}
+.cm.ai .cm-b{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#ddd;}
+.cm.u .cm-b{background:var(--gold-dim);border:1px solid var(--gold-bdr);color:#fff;}
+.cm-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;}
+.cm.ai .cm-av{background:linear-gradient(135deg,var(--gold),#8a5c1e);}
+.cm.u .cm-av{background:rgba(255,255,255,.1);}
+.cp-sugg{padding:.6rem .95rem;border-top:1px solid rgba(255,255,255,.05);display:flex;flex-wrap:wrap;gap:.32rem;}
+.sug{padding:.27rem .7rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#888;font-size:.67rem;font-weight:500;letter-spacing:.03em;border-radius:3px;transition:all .2s;}
+.sug:hover{border-color:var(--gold-bdr);color:var(--gold);background:var(--gold-dim);}
+.cp-inp{padding:.85rem 1.05rem;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:.6rem;}
+.cinp{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#fff;padding:.6rem .85rem;font-size:.79rem;outline:none;transition:border-color .2s;resize:none;border-radius:var(--radius);font-family:'Manrope',sans-serif;}
+.cinp:focus{border-color:var(--gold-bdr);}
+.cinp::placeholder{color:#555;}
+.csend{width:36px;height:36px;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#000;font-size:.95rem;flex-shrink:0;align-self:flex-end;border-radius:var(--radius);transition:all .2s;}
+.csend:hover{background:var(--gold-lt);}
+
+/* ═══════════════════════════════════
+   TOAST
+═══════════════════════════════════ */
+.toast{
+  position:fixed;bottom:6.5rem;left:50%;
+  transform:translateX(-50%) translateY(80px);opacity:0;pointer-events:none;
+  background:#111;color:#fff;
+  border:1px solid rgba(255,255,255,.12);
+  padding:.72rem 1.5rem;z-index:800;
+  font-size:.79rem;font-weight:500;
+  display:flex;align-items:center;gap:.6rem;
+  transition:transform .3s cubic-bezier(.25,.46,.45,.94),opacity .3s;
+  white-space:nowrap;border-radius:var(--radius);
+  box-shadow:0 4px 18px rgba(0,0,0,.3);
+}
+.toast.on{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto;}
+.t-ico{color:var(--gold);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  nav{padding:0 1rem;}
+  .nav-links{display:none;}
+  .top-bar{display:none;}
+  .section{padding:3rem 1rem;}
+  .pgrid{grid-template-columns:repeat(2,1fr);gap:.85rem;}
+  .brands-grid{grid-template-columns:repeat(3,1fr);}
+  .tgrid{grid-template-columns:1fr;}
+  .fit-grid{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr 1fr;}
+  .cart-side{width:100%;right:-100%;}
+  .outfit-grid{grid-template-columns:repeat(2,1fr);}
+  .md-top{grid-template-columns:1fr;}
+  .md-img{min-height:200px;aspect-ratio:2/1;}
+  .trust-strip{grid-template-columns:repeat(2,1fr);}
+  .fit-section{margin:0 1rem 3.5rem;}
+  .brands-strip{display:none;}
+  .cp{width:calc(100vw - 2rem);right:1rem;}
+}
+
+/* ═══════════════════════════════════
+   FLASH SALE SECTION
+═══════════════════════════════════ */
+.flash-section{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:#0e0e0e;
+  border-top:12px solid #f7f5f2;
+  border-bottom:12px solid #f7f5f2;
+}
+.flash-left{
+  padding:3.5rem 3rem;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid rgba(255,255,255,.07);
+  background:linear-gradient(145deg,#141414,#0a0a00);
+  position:relative;overflow:hidden;
+}
+.flash-left::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 80%,rgba(201,160,64,.07),transparent 55%);
+  pointer-events:none;
+}
+.flash-eyebrow{
+  display:flex;align-items:center;gap:.65rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.5rem;
+}
+.flash-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.flash-h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,4vw,3.8rem);font-weight:900;
+  line-height:1;color:#fff;margin-bottom:1rem;
+}
+.flash-h2 em{font-style:italic;color:var(--gold);}
+.flash-sub{font-size:.85rem;color:#666;line-height:1.65;margin-bottom:2rem;font-weight:400;}
+.countdown{display:flex;gap:.75rem;margin-bottom:2rem;}
+.cd-block{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;
+  padding:.7rem .9rem;text-align:center;min-width:64px;
+}
+.cd-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;font-weight:700;color:#fff;line-height:1;display:block;
+}
+.cd-lbl{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#555;margin-top:.25rem;display:block;}
+.flash-right{
+  background:#0e0e0e;
+  display:flex;flex-direction:column;
+}
+.deal-item{
+  display:grid;grid-template-columns:64px 1fr;gap:1.15rem;align-items:center;
+  padding:1.4rem 2rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  cursor:pointer;transition:background .2s;
+}
+.deal-item:last-child{border:none;}
+.deal-item:hover{background:rgba(255,255,255,.03);}
+.deal-em{
+  width:64px;height:64px;border-radius:var(--radius);
+  background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.9rem;flex-shrink:0;
+}
+.deal-brand{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.22rem;}
+.deal-name{font-size:.9rem;font-weight:600;color:#ddd;margin-bottom:.38rem;line-height:1.3;}
+.deal-prices{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.deal-now{font-size:1rem;font-weight:700;color:#fff;}
+.deal-was{font-size:.8rem;color:#555;text-decoration:line-through;}
+.deal-pct{font-size:.68rem;font-weight:700;color:#fff;background:var(--red);padding:.18rem .52rem;border-radius:3px;letter-spacing:.04em;}
+.deal-ship{font-size:.69rem;color:#4caf50;font-weight:600;margin-top:.3rem;display:flex;align-items:center;gap:.3rem;}
+@media(max-width:960px){
+  .flash-section{grid-template-columns:1fr;}
+  .flash-left{padding:2.5rem 1.5rem;}
+  .flash-right{border-top:1px solid rgba(255,255,255,.07);}
+  .deal-item{padding:1.1rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<div class="top-bar">
+  <span>🚚 <span class="hl">FREE Rapid Shipping</span> on all orders</span>
+  <span>✦ Authorized dealer — 100% Authenticity Guaranteed on every item</span>
+  <span>🔁 <span class="hl">30-day hassle-free returns</span></span>
+</div>
+
+<!-- ── PROMO TICKER ── -->
+<div class="promo-bar">
+  <div class="promo-track">
+    <span class="promo-item">🔥 SALE — <b>Up to 90% off</b> retail prices</span>
+    <span class="promo-item">✦ NEW IN: <b>Ray-Ban & Gucci SS26</b></span>
+    <span class="promo-item">🤖 AI Style Assistant — <b>Try it free</b></span>
+    <span class="promo-item">🚚 <b>FREE Rapid Shipping</b> on all orders</span>
+    <span class="promo-item">⭐ <b>4.8/5</b> from 3,118+ verified reviews</span>
+    <span class="promo-item">✦ Authorized dealer: <b>Ray-Ban · Gucci · Prada · Versace · Bulova · Seiko · Coach · UGG</b></span>
+    <span class="promo-item">🔥 SALE — <b>Up to 90% off</b> retail prices</span>
+    <span class="promo-item">✦ NEW IN: <b>Ray-Ban & Gucci SS26</b></span>
+    <span class="promo-item">🤖 AI Style Assistant — <b>Try it free</b></span>
+    <span class="promo-item">🚚 <b>FREE Rapid Shipping</b> on all orders</span>
+    <span class="promo-item">⭐ <b>4.8/5</b> from 3,118+ verified reviews</span>
+    <span class="promo-item">✦ Authorized dealer: <b>Ray-Ban · Gucci · Prada · Versace · Bulova · Seiko · Coach · UGG</b></span>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">Joy<span>Lot</span></a>
+  <div class="nav-search">
+    <span class="ns-ico">🔍</span>
+    <input id="nsInput" placeholder="Search Ray-Ban, Bulova, Gucci, UGG…" autocomplete="off"/>
+    <div class="ns-drop" id="nsDrop"></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#products">Sunglasses</a></li>
+    <li><a href="#products">Watches</a></li>
+    <li><a href="#products">Apparel</a></li>
+    <li><a href="#products">Shoes</a></li>
+    <li><a href="#products">Bags</a></li>
+    <li><a href="#trends">Trends</a></li>
+    <li><a href="#products" class="hot">Sale — Up to 90%</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="ai-pill" onclick="toggleConc()"><span class="ai-dot"></span>AI Stylist</div>
+    <button class="nav-ibtn" onclick="openCart()">
+      <span class="ico">🛍️</span>Cart
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── CATEGORY NAV ── -->
+<div class="cat-nav" id="catNav">
+  <a href="#" class="active" onclick="catFilter('all',this);return false">All</a>
+  <a href="#" onclick="catFilter('sunglasses',this);return false">Sunglasses</a>
+  <a href="#" onclick="catFilter('watches',this);return false">Watches</a>
+  <a href="#" onclick="catFilter('apparel',this);return false">Apparel</a>
+  <a href="#" onclick="catFilter('shoes',this);return false">Shoes</a>
+  <a href="#" onclick="catFilter('bags',this);return false">Bags</a>
+  <a href="#" onclick="catFilter('jewelry',this);return false">Jewelry</a>
+  <a href="#" onclick="catFilter('electronics',this);return false">Electronics</a>
+  <a href="#" class="hl">Joy of the Day ✦</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Authorized Dealer Since 2005 — Spring 2026</div>
+    <h1 class="hero-h1">Designer<br>Brands at<br><em>Honest</em><br>Prices.</h1>
+    <p class="hero-sub">Ray-Ban, Gucci, Prada, Versace, Bulova, Seiko, Coach, UGG & 100+ authentic brands — up to 90% off retail. Free rapid shipping on every order.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-gold">Shop Now →</a>
+      <button class="btn-outline-w" onclick="toggleConc()">Ask AI Stylist ✦</button>
+    </div>
+  </div>
+  <div class="hero-right" id="heroRight"></div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="t-i">✦ FREE Rapid Shipping <b>on all orders</b></span>
+    <span class="t-i">✦ Ray-Ban Aviators <b>from $89.95</b></span>
+    <span class="t-i">✦ Bulova Watches <b>up to 40% off</b></span>
+    <span class="t-i">✦ Gucci & Prada <b>sunglasses in stock</b></span>
+    <span class="t-i">✦ SALE <b>Up to 90% Off</b> retail</span>
+    <span class="t-i">✦ 100% <b>Authenticity Guaranteed</b></span>
+    <span class="t-i">✦ FREE Rapid Shipping <b>on all orders</b></span>
+    <span class="t-i">✦ Ray-Ban Aviators <b>from $89.95</b></span>
+    <span class="t-i">✦ Bulova Watches <b>up to 40% off</b></span>
+    <span class="t-i">✦ Gucci & Prada <b>sunglasses in stock</b></span>
+    <span class="t-i">✦ SALE <b>Up to 90% Off</b> retail</span>
+    <span class="t-i">✦ 100% <b>Authenticity Guaranteed</b></span>
+  </div>
+</div>
+
+
+<!-- ── BRANDS STRIP ── -->
+<div class="brands-strip">
+  <span class="brands-lbl">Shop by Brand:</span>
+  <span class="brand-pill active" onclick="brandFilter('all',this)">All Brands</span>
+  <span class="brand-pill" onclick="brandFilter('Ray-Ban',this)">Ray-Ban</span>
+  <span class="brand-pill" onclick="brandFilter('Gucci',this)">Gucci</span>
+  <span class="brand-pill" onclick="brandFilter('Prada',this)">Prada</span>
+  <span class="brand-pill" onclick="brandFilter('Versace',this)">Versace</span>
+  <span class="brand-pill" onclick="brandFilter('Maui Jim',this)">Maui Jim</span>
+  <span class="brand-pill" onclick="brandFilter('Bulova',this)">Bulova</span>
+  <span class="brand-pill" onclick="brandFilter('Seiko',this)">Seiko</span>
+  <span class="brand-pill" onclick="brandFilter('Fossil',this)">Fossil</span>
+  <span class="brand-pill" onclick="brandFilter('Citizen',this)">Citizen</span>
+  <span class="brand-pill" onclick="brandFilter('Hugo Boss',this)">Hugo Boss</span>
+  <span class="brand-pill" onclick="brandFilter('Coach',this)">Coach</span>
+  <span class="brand-pill" onclick="brandFilter('UGG',this)">UGG</span>
+  <span class="brand-pill" onclick="brandFilter('Casio',this)">Casio</span>
+</div>
+
+<!-- ── PRODUCTS SECTION ── -->
+<section class="section" id="products" style="background:#fff;">
+  <div class="sec-hd">
+    <h2 class="sec-title">Featured <em>Products</em></h2>
+    <span class="sec-meta" id="pCount">20 items</span>
+  </div>
+  <div class="fbar">
+    <span class="flbl">Category:</span>
+    <button class="fbtn active" data-f="all">All</button>
+    <button class="fbtn" data-f="sunglasses">Sunglasses</button>
+    <button class="fbtn" data-f="watches">Watches</button>
+    <button class="fbtn" data-f="apparel">Apparel</button>
+    <button class="fbtn" data-f="shoes">Shoes</button>
+    <button class="fbtn" data-f="bags">Bags</button>
+    <button class="fbtn" data-f="electronics">Electronics</button>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+</section>
+
+
+<!-- ── FLASH SALE ── -->
+<div style="background:#f7f5f2;padding:2.5rem 2rem 0;display:flex;align-items:center;justify-content:space-between;">
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <span style="display:block;width:36px;height:2px;background:var(--gold)"></span>
+    <span style="font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">Flash Sale</span>
+  </div>
+  <span style="font-size:.72rem;color:var(--muted);font-weight:500">Limited time — prices drop every hour</span>
+</div>
+<section class="flash-section" id="flashSale">
+  <div class="flash-left">
+    <div class="flash-eyebrow">Flash Sale — Limited Time</div>
+    <h2 class="flash-h2">Today's <em>Best</em><br>Deals</h2>
+    <p class="flash-sub">Prices drop every hour. Free shipping on all orders.</p>
+    <div class="countdown">
+      <div class="cd-block"><span class="cd-num" id="cdH">08</span><span class="cd-lbl">Hours</span></div>
+      <div class="cd-block"><span class="cd-num" id="cdM">46</span><span class="cd-lbl">Min</span></div>
+      <div class="cd-block"><span class="cd-num" id="cdS">51</span><span class="cd-lbl">Sec</span></div>
+    </div>
+    <button class="btn-gold" onclick="catFilter('all',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Flash Deals</button>
+  </div>
+  <div class="flash-right" id="flashDeals"></div>
+</section>
+
+<!-- ── TRUST STRIP ── -->
+<div class="trust-strip">
+  <div class="trust-item"><span class="trust-ico">🛡️</span><div><div class="trust-label">100% Authentic</div><div class="trust-sub">Authorized dealer since 2005</div></div></div>
+  <div class="trust-item"><span class="trust-ico">🚀</span><div><div class="trust-label">Free Rapid Shipping</div><div class="trust-sub">Fast delivery on every order</div></div></div>
+  <div class="trust-item"><span class="trust-ico">↩️</span><div><div class="trust-label">30-Day Returns</div><div class="trust-sub">Hassle-free return policy</div></div></div>
+  <div class="trust-item"><span class="trust-ico">⭐</span><div><div class="trust-label">4.8/5 Stars</div><div class="trust-sub">3,118+ verified customer reviews</div></div></div>
+</div>
+
+<!-- ── BRANDS SECTION ── -->
+<section class="section" style="background:var(--bg);">
+  <div class="sec-hd">
+    <h2 class="sec-title">Our <em>Brands</em></h2>
+    <span class="sec-meta">100+ authorized brands</span>
+  </div>
+  <div class="brands-grid">
+    <div class="brand-card" onclick="brandFilter('Ray-Ban',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})"><div class="bc-em">🕶️</div><div class="bc-name">Ray-Ban</div><div class="bc-count">6 products</div></div>
+    <div class="brand-card" onclick="brandFilter('Gucci',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})"><div class="bc-em">👓</div><div class="bc-name">Gucci</div><div class="bc-count">2 products</div></div>
+    <div class="brand-card" onclick="brandFilter('Bulova',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})"><div class="bc-em">⌚</div><div class="bc-name">Bulova</div><div class="bc-count">3 products</div></div>
+    <div class="brand-card" onclick="brandFilter('Coach',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})"><div class="bc-em">👜</div><div class="bc-name">Coach</div><div class="bc-count">2 products</div></div>
+    <div class="brand-card" onclick="brandFilter('UGG',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})"><div class="bc-em">🥾</div><div class="bc-name">UGG</div><div class="bc-count">2 products</div></div>
+    <div class="brand-card" onclick="brandFilter('Seiko',null);document.getElementById('products').scrollIntoView({behavior:'smooth'})"><div class="bc-em">🕐</div><div class="bc-name">Seiko</div><div class="bc-count">2 products</div></div>
+  </div>
+</section>
+
+<!-- ── TRENDS ── -->
+<section class="section" id="trends" style="background:#111;padding-bottom:5rem;">
+  <div class="sec-hd" style="border-color:rgba(255,255,255,.1);">
+    <h2 class="sec-title" style="color:#fff;">AI <em>Trend</em> Report</h2>
+    <span class="sec-meta">2026</span>
+  </div>
+  <div class="tgrid">
+    <div class="tc" onclick="openTrend('Quiet Luxury Eyewear')">
+      <div class="tc-bg">◈</div>
+      <div class="tc-info"><div class="tc-tag">Trending Now</div><div class="tc-name">Quiet Luxury Eyewear</div><div class="tc-desc">Understated designer frames defining 2026</div><button class="btn-tai">✦ AI Analysis</button></div>
+    </div>
+    <div class="tc" onclick="openTrend('Statement Watches 2026')">
+      <div class="tc-bg">◉</div>
+      <div class="tc-info"><div class="tc-tag">Rising</div><div class="tc-name">Statement Watches</div><div class="tc-desc">Bold dials & colorful straps dominating wrists</div><button class="btn-tai">✦ AI Analysis</button></div>
+    </div>
+    <div class="tc" onclick="openTrend('Sport-Luxe Sunglasses')">
+      <div class="tc-bg">◇</div>
+      <div class="tc-info"><div class="tc-tag">Emerging</div><div class="tc-name">Sport-Luxe Sunglasses</div><div class="tc-desc">Performance meets premium in eyewear</div><button class="btn-tai">✦ AI Analysis</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIT FINDER ── -->
+<div class="fit-section" id="fitFinder">
+  <div class="fit-hd">
+    <div class="fit-ico">◎</div>
+    <div><div class="fit-sub">AI Feature</div><div class="fit-title">Smart Fit Finder</div></div>
+  </div>
+  <div class="fit-grid">
+    <div>
+      <div class="sinps">
+        <div class="sg"><label class="slbl">Height (cm)</label><input class="sinp" id="sH" placeholder="170" type="number"/></div>
+        <div class="sg"><label class="slbl">Weight (kg)</label><input class="sinp" id="sW" placeholder="65" type="number"/></div>
+        <div class="sg"><label class="slbl">Head circ. (cm)</label><input class="sinp" id="sC" placeholder="57" type="number"/></div>
+        <div class="sg"><label class="slbl">Wrist (cm)</label><input class="sinp" id="sWa" placeholder="16" type="number"/></div>
+      </div>
+      <div class="sg" style="margin-bottom:1.1rem"><label class="slbl">Style notes</label><input class="sinp" id="sN" placeholder="e.g. sporty, business casual, petite frame…" style="width:100%"/></div>
+      <button class="btn-gold" style="width:100%;border-radius:var(--radius)" onclick="getSizeAdvice()">✦ Get AI Fit Advice</button>
+    </div>
+    <div>
+      <div class="sres" id="sres">
+        Enter your measurements and let our AI find the perfect fit across Ray-Ban, Gucci, Bulova, UGG & 100+ brands.
+        <div class="ai-tags" style="margin-top:1rem">
+          <span class="ai-tag">Ray-Ban</span><span class="ai-tag">Gucci</span>
+          <span class="ai-tag">Prada</span><span class="ai-tag">Bulova</span>
+          <span class="ai-tag">UGG</span><span class="ai-tag">+100 more</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── DESIGNER WATCHES SECTION ── -->
+<section class="section" id="watchSection" style="background:#fff;border-top:1px solid var(--border);padding-top:3rem;">
+  <div class="sec-hd">
+    <h2 class="sec-title">Designer <em>Watches</em></h2>
+    <a href="#products" onclick="catFilter('watches',null);return false;" style="font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;">VIEW ALL →</a>
+  </div>
+  <div class="fbar" id="watchBrandBar">
+    <button class="fbtn active" onclick="filterWatches('all',this)">All</button>
+    <button class="fbtn" onclick="filterWatches('Fossil',this)">Fossil</button>
+    <button class="fbtn" onclick="filterWatches('Casio',this)">Casio</button>
+    <button class="fbtn" onclick="filterWatches('Versus Versace',this)">Versace</button>
+    <button class="fbtn" onclick="filterWatches('Bulova',this)">Bulova</button>
+    <button class="fbtn" onclick="filterWatches('Seiko',this)">Seiko</button>
+    <button class="fbtn" onclick="filterWatches('Citizen',this)">Citizen</button>
+  </div>
+  <div class="pgrid" id="watchGrid"></div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="ft-logo">Joy<span>Lot</span></div>
+    <p class="ft-tag">Authorized dealer of Ray-Ban, Gucci, Prada, Versace, Bulova, Seiko, Coach, UGG & 100+ top brands. Up to 90% off retail — always 100% authentic since 2005.</p>
+  </div>
+  <div>
+    <div class="ft-ct">Shop</div>
+    <ul class="ft-ls"><li><a href="#">Sunglasses</a></li><li><a href="#">Watches</a></li><li><a href="#">Apparel & Shoes</a></li><li><a href="#">Sale — Up to 90%</a></li></ul>
+  </div>
+  <div>
+    <div class="ft-ct">Help</div>
+    <ul class="ft-ls"><li><a href="#">Fit Finder</a></li><li><a href="#">Free Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Authenticity</a></li></ul>
+  </div>
+  <div>
+    <div class="ft-ct">JoyLot</div>
+    <ul class="ft-ls"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li><li><a href="#">800-393-5050</a></li></ul>
+  </div>
+</footer>
+<div class="ft-bot">
+  <span>© 2026 JoyLot.com · Deer Park, NY · All rights reserved.</span>
+  <span class="ft-ai">✦ Powered by Claude AI</span>
+</div>
+
+<!-- ══════════ CART SIDEBAR ══════════ -->
+<div class="cart-bd" id="cartBd" onclick="closeCart()"></div>
+<div class="cart-side" id="cartSide">
+  <div class="cart-hd">
+    <span class="cart-hd-t">Your Cart</span>
+    <button class="cart-x" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-ft">
+    <div class="cart-sub"><span class="lbl">Subtotal</span><span class="val" id="cartTotal">$0.00</span></div>
+    <button class="btn-checkout" onclick="toast('Proceeding to checkout…','🔒')">🔒 SECURE CHECKOUT →</button>
+    <p class="cart-note">✓ Free shipping · ✓ Authenticity guaranteed · ✓ 30-day returns</p>
+  </div>
+</div>
+
+<!-- ══════════ AI PRODUCT MODAL ══════════ -->
+<div class="mdbg" id="mdbg">
+  <div class="ai-modal">
+    <button class="md-x" onclick="closeMd()">×</button>
+    <div class="md-top">
+      <div class="md-img" id="mdImg"></div>
+      <div class="md-info">
+        <div class="md-brand" id="mdBrand"></div>
+        <div class="md-name" id="mdName"></div>
+        <div class="md-price-row">
+          <span class="md-price" id="mdPrice"></span>
+          <span class="md-was" id="mdWas"></span>
+          <span class="md-save" id="mdSave"></span>
+        </div>
+        <div class="md-desc" id="mdDesc"></div>
+        <div class="md-acts">
+          <button class="btn-add" id="mdAddCart">Add to Cart</button>
+          <button class="btn-sec" onclick="toast('Saved to wishlist','♡')">♡ Wishlist</button>
+          <button class="btn-sec" onclick="toast('Link copied','⊕')">⊕ Share</button>
+        </div>
+      </div>
+    </div>
+    <div class="ai-tabs">
+      <button class="atab active" onclick="switchTab('details',this)">✦ AI Overview</button>
+      <button class="atab" onclick="switchTab('outfit',this)">◈ Style It</button>
+      <button class="atab" onclick="switchTab('invest',this)">◉ Value Check</button>
+      <button class="atab" onclick="switchTab('care',this)">◎ Care Guide</button>
+    </div>
+    <div class="apanel active" id="tab-details"><div class="ld" id="ld-details"><div class="ld-d"><span></span><span></span><span></span></div>Analyzing this product…</div><div class="atxt" id="r-details"></div></div>
+    <div class="apanel" id="tab-outfit"><div class="ld" id="ld-outfit" style="display:none"><div class="ld-d"><span></span><span></span><span></span></div>Building outfit ideas…</div><div class="atxt" id="r-outfit"></div></div>
+    <div class="apanel" id="tab-invest"><div class="ld" id="ld-invest" style="display:none"><div class="ld-d"><span></span><span></span><span></span></div>Checking value…</div><div class="atxt" id="r-invest"></div></div>
+    <div class="apanel" id="tab-care"><div class="ld" id="ld-care" style="display:none"><div class="ld-d"><span></span><span></span><span></span></div>Preparing care guide…</div><div class="atxt" id="r-care"></div></div>
+  </div>
+</div>
+
+<!-- ══════════ TREND MODAL ══════════ -->
+<div class="trmbg" id="trmbg">
+  <div class="trm">
+    <button class="md-x" onclick="closeTrend()" style="position:static;display:flex;margin:0 0 1.5rem auto">×</button>
+    <div class="trm-tag">Trend Analysis — 2026</div>
+    <h3 id="trmTitle"></h3>
+    <div class="ld" id="trmLd"><div class="ld-d"><span></span><span></span><span></span></div>Analyzing trend…</div>
+    <div class="trm-body" id="trmBody" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ══════════ CONCIERGE ══════════ -->
+<div class="cp" id="cp">
+  <div class="cp-hd">
+    <div class="cp-av">✦</div>
+    <div>
+      <div class="cp-name">Aria — JoyLot AI</div>
+      <div class="cp-status">Online · Powered by Claude</div>
+    </div>
+    <button onclick="toggleConc()" style="margin-left:auto;background:none;border:none;color:#555;cursor:pointer;font-size:1.2rem;line-height:1">×</button>
+  </div>
+  <div class="cp-msgs" id="cpMsgs">
+    <div class="cm ai">
+      <div class="cm-av">✦</div>
+      <div class="cm-b">Hey! I'm Aria, JoyLot's AI shopping assistant. I can help you find the best deals on Ray-Ban, Gucci, Bulova, Coach and 100+ brands — all authentic, up to 90% off retail. What are you looking for?</div>
+    </div>
+  </div>
+  <div class="cp-sugg">
+    <button class="sug" onclick="sendSug(this)">Best Ray-Ban deals</button>
+    <button class="sug" onclick="sendSug(this)">Watches under $300</button>
+    <button class="sug" onclick="sendSug(this)">Find me a gift</button>
+    <button class="sug" onclick="sendSug(this)">What's trending?</button>
+  </div>
+  <div class="cp-inp">
+    <textarea class="cinp" id="cinp" placeholder="Ask about brands, products, sizing…" rows="2" onkeydown="chatKey(event)"></textarea>
+    <button class="csend" onclick="sendChat()">↑</button>
+  </div>
+</div>
+<button class="cb" onclick="toggleConc()">✦<span class="cb-n" id="cbN">1</span></button>
+
+<!-- ══════════ TOAST ══════════ -->
+<div class="toast" id="toast"><span class="t-ico" id="tIco"></span><span id="tMsg"></span></div>
+
+<script>
+// ═══════════════════════════════════════════
+// PRODUCTS — Real JoyLot brands & models
+// ═══════════════════════════════════════════
+const P = [
+  // SUNGLASSES
+  {id:1,brand:'Ray-Ban',name:'Aviator Classic,reviews:2384 RB3025 Gold/G-15',price:109.95,orig:183,disp:'$109.95',cat:'sunglasses',em:'🕶️',badge:'sale',stars:'★★★★★',desc:'The original Aviator. Gold metal frame, classic G-15 green lenses. UV protection, 58mm. 100% authentic from an authorized Ray-Ban dealer.',sku:'RB3025 001/58'},
+  {id:2,brand:'Ray-Ban',name:'Wayfarer RB2132 New Classic Black',reviews:1854,price:132,orig:173,disp:'$132.00',cat:'sunglasses',em:'🕶️',badge:'sale',stars:'★★★★★',desc:'The iconic Wayfarer shape that defined a generation. Black acetate frame, G-15 polarized green lenses, 52mm. Unisex design.',sku:'RB2132 901L/58'},
+  {id:3,brand:'Ray-Ban',name:'Round Metal RB3447,reviews:734 Gunmetal',price:157,disp:'$157.00',cat:'sunglasses',em:'🕶️',badge:'new',stars:'★★★★☆',desc:'Vintage-inspired round metal frames in gunmetal with gradient grey lenses. Slim metal temples, adjustable nose pads, 50mm.',sku:'RB3447 029/30'},
+  {id:4,brand:'Gucci',name:'GG0061S Cat Eye Havana',reviews:412,price:284,orig:450,disp:'$284.00',cat:'sunglasses',em:'👓',badge:'sale',stars:'★★★★★',desc:"Gucci's signature cat-eye in rich havana acetate. Gold-tone GG logo hardware at temples, gradient brown lenses, 100% UV protection.",sku:'GG0061S 002'},
+  {id:5,brand:'Prada',name:'PR 17WS Oval,reviews:285 Sunglasses Black',price:312,disp:'$312.00',cat:'sunglasses',em:'👓',badge:'new',stars:'★★★★☆',desc:'Sleek Prada oval frames in polished black acetate. Gradient grey lenses, silver-tone Prada triangle logo at temples.',sku:'PR 17WS 1AB5S0'},
+  {id:6,brand:'Versace',name:'VE4361 Medusa,reviews:921 Aviator Gold',price:198,orig:320,disp:'$198.00',cat:'sunglasses',em:'🕶️',badge:'sale',stars:'★★★★★',desc:'Bold Versace Medusa aviators in gold-tone metal. Dark grey gradient lenses, iconic Medusa head detail at temples.',sku:'VE4361 52230R'},
+  {id:7,brand:'Maui Jim',name:'Breakwall,reviews:617 Polarized TS402',price:229,disp:'$229.00',cat:'sunglasses',em:'🕶️',badge:'new',stars:'★★★★★',desc:"PolarizedPlus2® lenses eliminate 99.9% of glare. Lightweight titanium frame, patented lens technology, ideal for outdoor activities.",sku:'TS402-11'},
+  {id:8,brand:'Ray-Ban',name:'Clubmaster,reviews:1103 RB3016 Black/Gold',price:154,disp:'$154.00',cat:'sunglasses',em:'🕶️',badge:null,stars:'★★★★☆',desc:'The classic Clubmaster in black acetate with gold metal accents. G-15 lenses, 51mm. A timeless browline style worn since 1986.',sku:'RB3016 W0365'},
+  // WATCHES
+  {id:9,brand:'Bulova',name:"Precisionist Men's 96B175 Blue Dial",price:429.99,orig:650,disp:'$429.99',cat:'watches',em:'⌚',badge:'sale',stars:'★★★★★',desc:"Bulova's Precisionist movement — the most accurate sweep-second hand in the industry. Stainless steel case 46.5mm, blue sunray dial, chronograph.",sku:'96B175'},
+  {id:10,brand:'Seiko',name:'Prospex Solar,reviews:823 Diver SNE571',price:295,disp:'$295.00',cat:'watches',em:'⌚',badge:'new',stars:'★★★★★',desc:"200m diver's watch powered by solar energy. Hardlex crystal, LumiBrite hands and indices, stainless steel bracelet, 44mm case.",sku:'SNE571P1'},
+  {id:11,brand:'Fossil',name:'Grant Chronograph,reviews:1240 FS4835 Brown',price:119,orig:175,disp:'$119.00',cat:'watches',em:'⌚',badge:'sale',stars:'★★★★☆',desc:'Vintage-inspired brown leather strap, three-eye chronograph dial. Stainless steel case, 50m water resistance, Japanese quartz movement.',sku:'FS4835'},
+  {id:12,brand:'Citizen',name:'Eco-Drive,reviews:689 Chandler BM8180-03E',price:165,disp:'$165.00',cat:'watches',em:'⌚',badge:'new',stars:'★★★★★',desc:"Never needs a battery — light powered. Stainless steel case, sapphire crystal glass, perpetual calendar. Charges from any light source.",sku:'BM8180-03E'},
+  {id:13,brand:'Versus Versace',name:'Tokyo,reviews:312 VSP1O0321 Rose Gold Ladies',price:142,orig:220,disp:'$142.00',cat:'watches',em:'⌚',badge:'sale',stars:'★★★★☆',desc:"Feminine Versace Versus design in rose-gold IP case with blush pink bracelet. Japanese quartz, mineral crystal, 38mm case.",sku:'VSP1O0321'},
+  {id:14,brand:'Bulova',name:"Curv Skeleton 98A161 Men's",reviews:198,price:375,disp:'$375.00',cat:'watches',em:'⌚',badge:'new',stars:'★★★★★',desc:"The world's first curved chronograph movement visible through the open dial. Ultra-thin Curv caliber, stainless steel, 44mm.",sku:'98A161'},
+  // APPAREL
+  {id:15,brand:'Hugo Boss',name:'Slim Fit,reviews:445 Blazer Navy Wool Blend',price:189,orig:395,disp:'$189.00',cat:'apparel',em:'🧥',badge:'sale',stars:'★★★★☆',desc:'Tailored slim-fit blazer in navy wool-blend fabric. Fully lined with BOSS signature interior. Two-button closure, side pockets.',sku:'HB-BLAZER-NVY'},
+  {id:16,brand:'Guess',name:'Rhinestone,reviews:789 Logo Crewneck Fleece',price:59.99,orig:85,disp:'$59.99',cat:'apparel',em:'👕',badge:'sale',stars:'★★★★☆',desc:'Cozy fleece crewneck with Guess rhinestone logo across the chest. Relaxed unisex fit, ribbed cuffs and hem.',sku:'GS-CRW-LOGO'},
+  {id:17,brand:'Moschino',name:'Teddy Bear,reviews:234 Graphic Tee White',price:89,disp:'$89.00',cat:'apparel',em:'👕',badge:'new',stars:'★★★★★',desc:"Playful Moschino teddy bear motif on premium 100% cotton. The iconic Italian house's signature fun-fashion aesthetic.",sku:'MC-TEE-TDBY-W'},
+  // SHOES
+  {id:18,brand:'UGG',name:'Classic Short II,reviews:3241 Boot Chestnut',price:139,orig:170,disp:'$139.00',cat:'shoes',em:'👢',badge:'sale',stars:'★★★★★',desc:'Genuine twin-face sheepskin upper, suede heel guard, UGGpure® wool insole. The original cozy boot since 1978, reinvented.',sku:'UGG-1016223-CHE'},
+  {id:19,brand:'UGG',name:'Tasman,reviews:2876 Slipper Chestnut',price:99,disp:'$99.00',cat:'shoes',em:'🥿',badge:'new',stars:'★★★★★',desc:'Suede upper with UGGpure® wool lining and Treadlite by UGG® sole. The slip-on that became a street style staple.',sku:'UGG-3236-CHE'},
+  // BAGS
+  {id:20,brand:'Coach',name:'Tabby,reviews:956 Shoulder Bag 26 Tan',price:395,disp:'$395.00',cat:'bags',em:'👜',badge:'new',stars:'★★★★★',desc:"Coach's most coveted silhouette. Refined pebble leather, signature C hardware, interior zip pocket, adjustable strap. Made in USA.",sku:'CN867-B4NQ5'},
+  {id:21,brand:'Coach',name:'Willow,reviews:567 Tote Bag Black Leather',price:275,orig:350,disp:'$275.00',cat:'bags',em:'🎒',badge:'sale',stars:'★★★★☆',desc:'Spacious everyday tote in smooth leather with Coach script logo. Interior zip pocket, magnetic snap closure. 16"W x 13"H.',sku:'CN761-B4BK'},
+  // ELECTRONICS
+  {id:22,brand:'Casio',name:'G-Shock,reviews:4512 GA-2100 CasiOak Black',price:89,disp:'$89.00',cat:'electronics',em:'⌚',badge:'new',stars:'★★★★★',desc:"The viral 'CasiOak' silhouette. Carbon Core Guard structure, 200m water resistance, world time in 48 cities, LED backlight.",sku:'GA-2100-1A1'},
+];
+
+// ═══════════════════════════════════════════
+// CART
+// ═══════════════════════════════════════════
+let cart = [];
+const cartCount = () => cart.reduce((s,i)=>s+i.qty,0);
+const cartSub   = () => cart.reduce((s,i)=>s+(i.price*i.qty),0);
+
+function updateCartUI(){
+  const n = cartCount();
+  const b = document.getElementById('cartBadge');
+  b.textContent = n; b.classList.toggle('on', n>0);
+  document.getElementById('cartTotal').textContent = '$'+cartSub().toLocaleString('en-US',{minimumFractionDigits:2});
+  renderCart();
+}
+function renderCart(){
+  const body = document.getElementById('cartBody');
+  if(!cart.length){
+    body.innerHTML=`<div class="cart-empty"><div class="eico">🛍️</div><strong>Your cart is empty.</strong><p>Add some designer items to get started.</p></div>`;
+    return;
+  }
+  body.innerHTML=`<div>${cart.map(it=>`
+    <div class="citem">
+      <div class="ci-img">${it.em}</div>
+      <div>
+        <div class="ci-brand">${it.brand}</div>
+        <div class="ci-name">${it.name}</div>
+        <div class="ci-qty">
+          <button onclick="chQty(${it.id},-1)">−</button>
+          <span>${it.qty}</span>
+          <button onclick="chQty(${it.id},1)">+</button>
+        </div>
+      </div>
+      <div class="ci-right">
+        <div class="ci-price">$${(it.price*it.qty).toLocaleString('en-US',{minimumFractionDigits:2})}</div>
+        <button class="ci-rm" onclick="rmCart(${it.id})">✕ Remove</button>
+      </div>
+    </div>`).join('')}</div>`;
+}
+function addCart(id){
+  const p = P.find(x=>x.id===id); if(!p) return;
+  const ex = cart.find(x=>x.id===id);
+  if(ex) ex.qty++; else cart.push({...p,qty:1});
+  updateCartUI();
+  toast(`${p.brand} ${p.name.split(' ').slice(0,3).join(' ')} added`,'🛍️');
+  openCart();
+}
+function chQty(id,d){ const it=cart.find(x=>x.id===id); if(!it)return; it.qty+=d; if(it.qty<=0) rmCart(id); else updateCartUI(); }
+function rmCart(id){ cart=cart.filter(x=>x.id!==id); updateCartUI(); }
+function openCart(){ document.getElementById('cartBd').classList.add('on'); document.getElementById('cartSide').classList.add('on'); document.body.style.overflow='hidden'; }
+function closeCart(){ document.getElementById('cartBd').classList.remove('on'); document.getElementById('cartSide').classList.remove('on'); document.body.style.overflow=''; }
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+let activeFilter='all', activeBrand='all';
+
+function renderProducts(){
+  let list = P;
+  if(activeFilter!=='all') list = list.filter(p=>p.cat===activeFilter);
+  if(activeBrand!=='all') list = list.filter(p=>p.brand===activeBrand);
+  document.getElementById('pCount').textContent = list.length+' item'+(list.length!==1?'s':'');
+  const grid = document.getElementById('pgrid');
+  if(!grid){ console.error('pgrid element not found'); return; }
+  grid.innerHTML = list.map((p,idx)=>{
+    const savePct = p.orig ? Math.round((1-p.price/p.orig)*100) : 0;
+    const bgClass = 'pc-bg-'+(idx%8);
+    return `
+    <div class="pc" onclick="openProduct(${p.id})">
+      <div class="pc-img ${bgClass}">
+        <div>${p.em}</div>
+        ${p.badge ? `<span class="pc-badge ${p.badge==='new'?'b-new':p.badge==='sale'?'b-sale':p.badge==='auth'?'b-auth':'b-hot'}">${p.badge==='new'?'New':p.badge==='sale'?'Sale':p.badge==='auth'?'✓ Auth':'Hot'}</span>` : ''}
+        ${savePct>0?`<span class="pc-badge b-pct" style="left:auto;right:.7rem">-${savePct}%</span>`:''}
+        <div class="pc-acts">
+          <button class="btn-atc" onclick="event.stopPropagation();addCart(${p.id})">Add to Cart</button>
+          <button class="btn-ai-sm" onclick="event.stopPropagation();openProduct(${p.id})">✦ AI</button>
+          <button class="btn-wl" onclick="event.stopPropagation();toast('Saved ♡','♡')">♡</button>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-brand">${p.brand}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-prices">
+          <span class="pc-now">${p.disp}</span>
+          ${p.orig?`<span class="pc-was">$${p.orig.toFixed(2)}</span>`:''}
+        </div>
+        <div class="pc-stars">${p.stars||''} <span style="font-size:.68rem;color:var(--muted);font-weight:400">(${p.reviews||0})</span></div>
+        <div style="font-size:.68rem;color:#3a9e5f;font-weight:600;margin-top:.28rem;">✓ Free Shipping Included</div>
+      </div>
+    </div>`}).join('');
+}
+
+function renderHeroCards(){
+  const featured = [P[0],P[3],P[8],P[17]]; // Aviator, Gucci, Bulova, UGG
+  document.getElementById('heroRight').innerHTML = featured.map(p=>{
+    const savePct = p.orig ? Math.round((1-p.price/p.orig)*100) : 0;
+    return `
+    <div class="hfc" onclick="openProduct(${p.id})">
+      <span class="hfc-badge ${p.badge==='sale'?'b-sale':p.badge==='new'?'b-new':'b-hot'}">${p.badge==='sale'?`Sale -${savePct}%`:p.badge==='new'?'New In':'Hot'}</span>
+      <div class="hfc-brand">${p.brand}</div>
+      <div class="hfc-name">${p.name}</div>
+      <div class="hfc-price">${p.disp}${p.orig?` <del>$${p.orig.toFixed(2)}</del>`:''}</div>
+      <span class="hfc-em">${p.em}</span>
+    </div>`}).join('');
+}
+
+// ── INIT (wrapped in DOMContentLoaded to guarantee DOM is ready) ──
+function init(){
+  try {
+    renderProducts();
+  } catch(e){ console.error('renderProducts error:', e); }
+  try {
+    updateCartUI();
+  } catch(e){ console.error('updateCartUI error:', e); }
+  try {
+    renderHeroCards();
+  } catch(e){ console.error('renderHeroCards error:', e); }
+
+  // flash deals
+  try { renderFlashDeals(); } catch(e){ console.error(e); }
+  try { renderWatchSection('all'); } catch(e){ console.error(e); }
+  // animations
+  setTimeout(initAnimations, 50);
+
+  // filter buttons
+  document.querySelectorAll('.fbtn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      activeFilter = b.dataset.f;
+      activeBrand = 'all';
+      // sync brand strip
+      document.querySelectorAll('.brand-pill').forEach(p=>p.classList.toggle('active', p.textContent.trim()==='All Brands'));
+      renderProducts();
+    });
+  });
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+function catFilter(cat, el){
+  activeFilter = cat;
+  activeBrand = 'all';
+  document.querySelectorAll('.cat-nav a').forEach(a=>a.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('active', b.dataset.f===cat));
+  document.querySelectorAll('.brand-pill').forEach(p=>p.classList.toggle('active', p.textContent.trim()==='All Brands'));
+  renderProducts();
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+function brandFilter(brand, el){
+  activeBrand = brand;
+  activeFilter = 'all';
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('active', b.dataset.f==='all'));
+  if(el){ document.querySelectorAll('.brand-pill').forEach(p=>p.classList.remove('active')); el.classList.add('active'); }
+  renderProducts();
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════════════════════════════════════════
+// PRODUCT MODAL
+// ═══════════════════════════════════════════
+let curP=null, tabCache={};
+const H4s = `<h4 style="color:#c9a040;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:1.1rem 0 .32rem;font-family:'Manrope',sans-serif">`;
+
+function openProduct(id){
+  const p=P.find(x=>x.id===id); if(!p) return;
+  curP=p; if(!tabCache[id]) tabCache[id]={};
+  document.getElementById('mdImg').textContent=p.em;
+  document.getElementById('mdBrand').textContent=p.brand;
+  document.getElementById('mdName').textContent=p.name;
+  document.getElementById('mdPrice').textContent=p.disp;
+  const savePct = p.orig ? Math.round((1-p.price/p.orig)*100) : 0;
+  document.getElementById('mdWas').textContent = p.orig ? `$${p.orig.toFixed(2)}` : '';
+  document.getElementById('mdSave').textContent = savePct>0 ? `Save ${savePct}%` : '';
+  document.getElementById('mdSave').style.display = savePct>0 ? '' : 'none';
+  document.getElementById('mdDesc').textContent=p.desc;
+  document.getElementById('mdAddCart').onclick=()=>{ addCart(p.id); closeMd(); };
+  ['details','outfit','invest','care'].forEach(t=>{
+    document.getElementById('r-'+t).innerHTML=''; document.getElementById('r-'+t).classList.remove('vis');
+    document.getElementById('ld-'+t).style.display=t==='details'?'flex':'none';
+  });
+  document.querySelectorAll('.atab').forEach((t,i)=>t.classList.toggle('active',i===0));
+  document.querySelectorAll('.apanel').forEach((t,i)=>t.classList.toggle('active',i===0));
+  document.getElementById('mdbg').classList.add('on');
+  document.body.style.overflow='hidden';
+  if(tabCache[id].details) showTab('details',tabCache[id].details);
+  else fetchAI('details',p);
+}
+function closeMd(){ document.getElementById('mdbg').classList.remove('on'); document.body.style.overflow=''; }
+document.getElementById('mdbg').addEventListener('click',e=>{ if(e.target===document.getElementById('mdbg')) closeMd(); });
+
+function switchTab(name,btn){
+  document.querySelectorAll('.atab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.apanel').forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  if(!curP) return;
+  if(tabCache[curP.id]&&tabCache[curP.id][name]) showTab(name,tabCache[curP.id][name]);
+  else if(!document.getElementById('r-'+name).classList.contains('vis')){
+    document.getElementById('ld-'+name).style.display='flex';
+    fetchAI(name,curP);
+  }
+}
+function showTab(tab,html){
+  document.getElementById('ld-'+tab).style.display='none';
+  const el=document.getElementById('r-'+tab); el.innerHTML=html; el.classList.add('vis');
+}
+
+async function fetchAI(tab,p){
+  const retailStr = p.orig ? ` (retail $${p.orig.toFixed(2)}, JoyLot price ${p.disp})` : ` (${p.disp})`;
+  const sku = p.sku ? ` SKU: ${p.sku}.` : '';
+  const prompts = {
+    details:`You are a product expert at JoyLot, an authorized designer retailer. Analyze the ${p.brand} ${p.name}${retailStr}.${sku} Write 3 short sections using ${H4s} headers (close with </h4> before paragraph): "What Makes It Special", "Perfect For", "Why Buy at JoyLot". 3-4 sentences each. Friendly and informative tone. Use <p> tags for paragraphs.`,
+    outfit:`You are a style advisor at JoyLot. Create pairing ideas for the ${p.brand} ${p.name}. Return ONLY valid JSON (no markdown, no code fences): {"intro":"One sentence style tip","occasions":[{"name":"Occasion","outfit":"Full look with specific real brand items","mood":"One word"}],"keypieces":["Item 1 with brand","Item 2","Item 3"],"styletip":"One practical tip"} — exactly 3 occasions.`,
+    invest:`You are a value analyst at JoyLot. Evaluate the deal on ${p.brand} ${p.name}${retailStr}.${sku} Use ${H4s} headers (close with </h4>): "Retail vs JoyLot Price", "Brand Heritage & Resale Value", "Is It Worth It?". Include exactly 4 score bars in this format: <div class="score-row"><span class="score-lbl">Label</span><div class="score-track"><div class="score-fill" style="width:XX%"></div></div><span class="score-val">XX</span></div> for: Value for Money, Brand Prestige, Build Quality, Resale Value. Use realistic scores. Use <p> tags.`,
+    care:`You are a product care specialist. Write a care guide for the ${p.brand} ${p.name}.${sku} Use ${H4s} headers (close with </h4>): "Daily Care", "Cleaning", "Storage", "Pro Tips". 3-4 concise sentences each. Practical and easy to follow. Use <p> tags.`
+  };
+  try{
+    const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:900,messages:[{role:'user',content:prompts[tab]}]})});
+    const data=await r.json();
+    let text=data.content[0].text, html='';
+    if(tab==='outfit'){
+      try{
+        const j=JSON.parse(text);
+        html=`<p style="color:var(--gold);font-style:italic;margin-bottom:1.3rem;font-weight:500">"${j.intro}"</p>
+        <div class="outfit-grid">
+          ${j.occasions.map(o=>`<div class="oc"><div class="oc-em">◈</div><div class="oc-lbl">${o.name}</div><div class="oc-txt">${o.outfit}</div><div style="margin-top:.35rem;font-size:.6rem;color:var(--gold);font-weight:700;opacity:.8">${o.mood}</div></div>`).join('')}
+          <div class="oc"><div class="oc-em">✦</div><div class="oc-lbl">Key Pieces</div><div class="oc-txt">${j.keypieces.join('<br>')}</div></div>
+        </div>
+        <p style="margin-top:1.3rem;color:var(--muted);font-style:italic;font-size:.81rem">💡 ${j.styletip}</p>`;
+      }catch{ html=`<p>${text}</p>`; }
+    } else html=text;
+    if(!tabCache[p.id]) tabCache[p.id]={};
+    tabCache[p.id][tab]=html; showTab(tab,html);
+  }catch{
+    showTab(tab,`<p style="color:var(--muted)">Unable to load AI insights right now. Please try again.</p>`);
+  }
+}
+
+// ═══════════════════════════════════════════
+// TREND MODAL
+// ═══════════════════════════════════════════
+function openTrend(name){
+  document.getElementById('trmTitle').textContent=name;
+  document.getElementById('trmLd').style.display='flex';
+  document.getElementById('trmBody').style.display='none';
+  document.getElementById('trmbg').classList.add('on');
+  document.body.style.overflow='hidden';
+  fetchTrend(name);
+}
+function closeTrend(){ document.getElementById('trmbg').classList.remove('on'); document.body.style.overflow=''; }
+document.getElementById('trmbg').addEventListener('click',e=>{ if(e.target===document.getElementById('trmbg')) closeTrend(); });
+
+async function fetchTrend(name){
+  try{
+    const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,
+        messages:[{role:'user',content:`You are a trend analyst for JoyLot, authorized retailer of Ray-Ban, Gucci, Prada, Versace, Maui Jim, Bulova, Seiko, Coach, UGG and 100+ brands. Analyze the "${name}" trend for 2026. Include: what this trend means for accessories and eyewear, which brands at JoyLot lead it, must-have pieces, who it suits, and 2 specific product recommendations from JoyLot's catalog. Use ${H4s} headers (close with </h4>). Use <p> tags. Be practical and accessible.`}]})});
+    const data=await r.json();
+    document.getElementById('trmLd').style.display='none';
+    document.getElementById('trmBody').innerHTML=data.content[0].text;
+    document.getElementById('trmBody').style.display='block';
+  }catch{
+    document.getElementById('trmLd').style.display='none';
+    document.getElementById('trmBody').innerHTML='<p style="color:var(--muted)">Unable to load analysis. Please try again.</p>';
+    document.getElementById('trmBody').style.display='block';
+  }
+}
+
+// ═══════════════════════════════════════════
+// FIT FINDER
+// ═══════════════════════════════════════════
+async function getSizeAdvice(){
+  const h=document.getElementById('sH').value, w=document.getElementById('sW').value,
+        c=document.getElementById('sC').value, wa=document.getElementById('sWa').value, n=document.getElementById('sN').value;
+  const res=document.getElementById('sres');
+  res.innerHTML=`<div class="ld"><div class="ld-d"><span></span><span></span><span></span></div>Calculating your perfect fit…</div>`;
+  res.classList.remove('loaded');
+  try{
+    const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:700,
+        messages:[{role:'user',content:`You are a fit expert at JoyLot, authorized retailer of 100+ designer brands. Customer measurements: Height ${h||'?'}cm, Weight ${w||'?'}kg, Head circumference ${c||'?'}cm, Wrist circumference ${wa||'?'}cm, Style notes: ${n||'none'}. Give specific fitting advice for: sunglasses frame size (use head circumference), watch case size (use wrist), and apparel size (use Hugo Boss, Guess, UGG). Explain each brand's specific sizing quirks. Use ${H4s} headers (close with </h4>) per category. Use <p> tags. Be helpful and specific.`}]})});
+    const data=await r.json(); res.innerHTML=data.content[0].text; res.classList.add('loaded');
+  }catch{ res.innerHTML='<p>Unable to calculate fit right now. Please try again.</p>'; }
+}
+
+// ═══════════════════════════════════════════
+// AI SEARCH
+// ═══════════════════════════════════════════
+let searchT;
+document.getElementById('nsInput').addEventListener('input',function(){
+  clearTimeout(searchT);
+  const q=this.value.trim(); const dr=document.getElementById('nsDrop');
+  if(q.length<3){ dr.classList.remove('open'); return; }
+  searchT=setTimeout(async()=>{
+    dr.classList.add('open');
+    dr.innerHTML='<div style="padding:.85rem 1rem;color:var(--muted);font-size:.78rem;display:flex;align-items:center;gap:.6rem"><div class="ld-d" style="display:flex;gap:.28rem"><span></span><span></span><span></span></div>Finding matches…</div>';
+    try{
+      const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,
+          messages:[{role:'user',content:`User searched: "${q}". Products: ${P.map(p=>`id:${p.id} ${p.brand} ${p.name} ${p.disp} ${p.cat}`).join('; ')}. Return ONLY JSON (no markdown): {"matches":[{"id":1,"reason":"Why this matches in 8 words max"}],"tip":"Shopping tip in 10 words max"}. Return 2-3 best matches.`}]})});
+      const data=await r.json(); let j; try{j=JSON.parse(data.content[0].text);}catch{j={matches:[],tip:''};}
+      if(!j.matches.length){ dr.innerHTML=`<div style="padding:.85rem 1rem;color:var(--muted);font-size:.8rem">${j.tip||'No matches found. Try different keywords.'}</div>`; return; }
+      dr.innerHTML=j.matches.map(m=>{
+        const p=P.find(x=>x.id===m.id); if(!p) return '';
+        return`<div class="ns-item" onclick="clearSearch();openProduct(${p.id})">
+          <span class="ns-em">${p.em}</span>
+          <div><div class="ns-name">${p.brand} ${p.name}</div>
+          <div class="ns-meta"><span class="ns-tag">AI Match</span><span>${m.reason}</span><span class="ns-price">${p.disp}</span></div></div>
+        </div>`;
+      }).join('')+(j.tip?`<div style="padding:.6rem 1rem;font-size:.68rem;color:var(--gold);font-weight:600;border-top:1px solid var(--border)">✦ ${j.tip}</div>`:'');
+    }catch{ dr.classList.remove('open'); }
+  },550);
+});
+function clearSearch(){ document.getElementById('nsDrop').classList.remove('open'); document.getElementById('nsInput').value=''; }
+document.addEventListener('click',e=>{ if(!e.target.closest('.nav-search')) clearSearch(); });
+
+// ═══════════════════════════════════════════
+// CONCIERGE
+// ═══════════════════════════════════════════
+let concOpen=false, chatHist=[];
+function toggleConc(){
+  concOpen=!concOpen;
+  document.getElementById('cp').classList.toggle('on',concOpen);
+  const n=document.getElementById('cbN'); if(n) n.remove();
+}
+function chatKey(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChat(); } }
+function sendSug(btn){ document.getElementById('cinp').value=btn.textContent; sendChat(); }
+
+async function sendChat(){
+  const inp=document.getElementById('cinp'); const msg=inp.value.trim(); if(!msg) return;
+  inp.value=''; appendMsg('u',msg); chatHist.push({role:'user',content:msg});
+  const tid='t'+Date.now();
+  appendMsg('ai','<div class="ld-d" style="display:flex;gap:.28rem;padding:.15rem 0"><span></span><span></span><span></span></div>',tid);
+  try{
+    const r=await fetch('/api/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,
+        system:`You are Aria, JoyLot's AI shopping assistant. JoyLot is an authorized dealer of 100+ brands — Ray-Ban, Gucci, Prada, Versace, Maui Jim, Bulova, Seiko, Citizen, Fossil, Versus Versace, Hugo Boss, Guess, Moschino, Coach, UGG, Casio — all authentic, up to 90% off retail, free rapid shipping. Key products: Ray-Ban Aviator RB3025 $109.95 (retail $183), Ray-Ban Wayfarer RB2132 $132, Gucci GG0061S $284 (retail $450), Versace VE4361 $198 (retail $320), Bulova Precisionist $429.99 (retail $650), Seiko Prospex SNE571 $295, Fossil Grant $119 (retail $175), Hugo Boss Blazer $189 (retail $395), Coach Tabby Bag $395, UGG Classic Short $139 (retail $170), Casio G-Shock $89. Be friendly, knowledgeable and direct — 2-4 sentences max. Help customers find the best deal.`,
+        messages:chatHist})});
+    const data=await r.json(); const reply=data.content[0].text;
+    chatHist.push({role:'assistant',content:reply});
+    document.getElementById(tid)?.remove(); appendMsg('ai',reply);
+  }catch{
+    document.getElementById(tid)?.remove();
+    appendMsg('ai','Connection issue. Please try again in a moment.');
+  }
+}
+function appendMsg(role,content,id){
+  const c=document.getElementById('cpMsgs');
+  const d=document.createElement('div'); d.className=`cm ${role}`; if(id) d.id=id;
+  d.innerHTML=`<div class="cm-av">${role==='ai'?'✦':'◉'}</div><div class="cm-b">${content}</div>`;
+  c.appendChild(d); c.scrollTop=c.scrollHeight;
+}
+
+// ═══════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════
+function toast(msg,ico='✦'){
+  document.getElementById('tMsg').textContent=msg;
+  document.getElementById('tIco').textContent=ico;
+  const t=document.getElementById('toast'); t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),2600);
+}
+
+// ═══════════════════════════════════════════
+// ENTRANCE ANIMATIONS — called after render
+// ═══════════════════════════════════════════
+function initAnimations(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+  },{threshold:0.06});
+  document.querySelectorAll('.trust-item,.brand-card,.tc,.hfc,.pc').forEach(el=>{
+    el.style.opacity='0'; el.style.transform='translateY(14px)';
+    el.style.transition='opacity .4s ease,transform .4s ease'; obs.observe(el);
+  });
+}
+
+// ═══════════════════════════════════════════
+// FLASH SALE — countdown + deal items
+// ═══════════════════════════════════════════
+const FLASH_DEALS = [
+  {id:2,  brand:'Ray-Ban',  name:'RB2132 Wayfarer New Classic — Black', price:132,  orig:173,  em:'🕶️'},
+  {id:6,  brand:'Versace',  name:'VE4361 Medusa Aviator — Gold',        price:198,  orig:320,  em:'🕶️'},
+  {id:4,  brand:'Gucci',    name:'GG0061S Cat Eye — Havana',            price:284,  orig:450,  em:'👓'},
+  {id:11, brand:'Fossil',   name:'Grant Chronograph FS4835 — Brown',    price:119,  orig:175,  em:'⌚'},
+  {id:9,  brand:'Bulova',   name:'Precisionist 96B175 — Blue Dial',     price:429.99,orig:650, em:'⌚'},
+  {id:18, brand:'UGG',      name:'Classic Short II Boot — Chestnut',    price:139,  orig:170,  em:'👢'},
+];
+
+function renderFlashDeals(){
+  const el = document.getElementById('flashDeals');
+  if(!el) return;
+  el.innerHTML = FLASH_DEALS.map(d=>{
+    const pct = Math.round((1 - d.price/d.orig)*100);
+    return `
+    <div class="deal-item" onclick="openProduct(${d.id})">
+      <div class="deal-em">${d.em}</div>
+      <div>
+        <div class="deal-brand">${d.brand}</div>
+        <div class="deal-name">${d.name}</div>
+        <div class="deal-prices">
+          <span class="deal-now">$${d.price.toFixed(2)}</span>
+          <span class="deal-was">$${d.orig.toFixed(2)}</span>
+          <span class="deal-pct">-${pct}%</span>
+        </div>
+        <div class="deal-ship">✓ Free Shipping</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Countdown timer — counts down from a fixed end time (8h from page load)
+(function startCountdown(){
+  const end = Date.now() + (8*3600 + 46*60 + 51)*1000;
+  function tick(){
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    const fmt = n => String(n).padStart(2,'0');
+    const hEl=document.getElementById('cdH'), mEl=document.getElementById('cdM'), sEl=document.getElementById('cdS');
+    if(hEl) hEl.textContent=fmt(h);
+    if(mEl) mEl.textContent=fmt(m);
+    if(sEl) sEl.textContent=fmt(s);
+    if(diff>0) setTimeout(tick,1000);
+  }
+  tick();
+})();
+
+
+// ═══════════════════════════════════════════
+// DESIGNER WATCHES SUB-SECTION
+// ═══════════════════════════════════════════
+function renderWatchSection(brand){
+  brand = brand || 'all';
+  const el = document.getElementById('watchGrid');
+  if(!el) return;
+  let list = P.filter(p=>p.cat==='watches');
+  if(brand!=='all') list = list.filter(p=>p.brand===brand);
+  el.innerHTML = list.map((p,idx)=>{
+    const savePct = p.orig ? Math.round((1-p.price/p.orig)*100) : 0;
+    const bgClass = 'pc-bg-'+(idx%8);
+    return `
+    <div class="pc" onclick="openProduct(${p.id})">
+      <div class="pc-img ${bgClass}">
+        <div>${p.em}</div>
+        ${p.badge ? `<span class="pc-badge ${p.badge==='new'?'b-new':p.badge==='sale'?'b-sale':p.badge==='auth'?'b-auth':'b-hot'}">${p.badge==='new'?'New':p.badge==='sale'?'Sale':p.badge==='auth'?'✓ Auth':'Hot'}</span>` : ''}
+        ${savePct>0?`<span class="pc-badge b-pct" style="left:auto;right:.7rem">-${savePct}%</span>`:''}
+        <div class="pc-acts">
+          <button class="btn-atc" onclick="event.stopPropagation();addCart(${p.id})">Add to Cart</button>
+          <button class="btn-ai-sm" onclick="event.stopPropagation();openProduct(${p.id})">✦ AI</button>
+          <button class="btn-wl" onclick="event.stopPropagation();toast('Saved','♡')">♡</button>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-brand">${p.brand}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-prices"><span class="pc-now">${p.disp}</span>${p.orig?`<span class="pc-was">$${p.orig.toFixed(2)}</span>`:''}</div>
+        <div class="pc-stars">${p.stars||''} <span style="font-size:.68rem;color:var(--muted)">(${p.reviews||0})</span></div>
+        <div style="font-size:.68rem;color:#3a9e5f;font-weight:600;margin-top:.25rem;">✓ Free Shipping Included</div>
+      </div>
+    </div>`;
+  }).join('');
+  setTimeout(initAnimations, 20);
+}
+function filterWatches(brand, btn){
+  document.querySelectorAll('#watchBrandBar .fbtn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderWatchSection(brand);
+}
+
+</script>
+</body>
+</html>
